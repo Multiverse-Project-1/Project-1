@@ -3,7 +3,7 @@ package com.Project1.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -20,7 +20,9 @@ import java.util.Date;
         private Date expirationTime;
 
         /** @Transient prevents this user object from mapping */
-        @Transient
+        //@Transient
+        @OneToOne(fetch = FetchType.EAGER)
+        @JoinColumn(name = "user_id")
         private User user;
         public VerificationToken(User user, String token) {
             super();

