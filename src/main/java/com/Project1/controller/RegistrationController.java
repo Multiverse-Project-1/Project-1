@@ -5,6 +5,7 @@ import com.Project1.models.PasswordModel;
 import com.Project1.models.User;
 import com.Project1.models.UserModel;
 import com.Project1.models.VerificationToken;
+import com.Project1.repository.UserRepository;
 import com.Project1.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,6 +24,9 @@ public class RegistrationController {
     private UserService userService;
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/welcome")
     public String hello() {return "Welcome to my Project";
@@ -35,6 +40,15 @@ public class RegistrationController {
                 applicationUrl(request)
         ));
         return "Success";
+    }
+    @GetMapping("/user/{username}")
+    public User getUser(@PathVariable(value = "username") String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @GetMapping("/admin")
+    public List<User> list() {
+        return userRepository.findAll();
     }
 
     @GetMapping("/verifyRegistration")
