@@ -57,6 +57,7 @@ import java.io.IOException;
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid");
                 }
             }
+            filterChain.doFilter(request, response);
         }
 }
 

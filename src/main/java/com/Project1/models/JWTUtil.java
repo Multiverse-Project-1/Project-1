@@ -9,7 +9,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import java.util.Date;
 import java.util.UUID;
-import static org.springframework.security.config.Elements.JWT;
+
 
 @Component
 public class JWTUtil {

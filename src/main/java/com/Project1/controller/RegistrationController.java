@@ -4,7 +4,6 @@ package com.Project1.controller;
 import com.Project1.models.JWTUtil;
 import com.Project1.models.User;
 import com.Project1.repository.UserRepository;
-import com.Project1.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,14 +11,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.AuthenticationException;
+
 import java.util.*;
 
 @RestController
 @Slf4j
 public class RegistrationController {
-    @Autowired
-    private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
